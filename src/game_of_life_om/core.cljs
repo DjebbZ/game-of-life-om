@@ -4,7 +4,8 @@
 
 (enable-console-print!)
 
-(def app-state (atom {:text "Hello world!"}))
+(def app-state (atom {:text "Hello world!"
+                      :subtitle "Subtitle"}))
 
 (defn my-widget [data owner]
   (reify
@@ -15,7 +16,11 @@
     om/IRender
     (render [_]
             (prn "IRender")
-            (dom/h1 nil (:text data)))
+            (dom/div nil
+             (dom/h1 nil (:text data))
+             (om/build my-subwidget (:subtitle data)))
+            )
+
     om/IWillMount
     (will-mount [_]
                 (prn "IWillUnmount"))
@@ -36,11 +41,18 @@
                    (prn "IShouldUpdate")
                    true)))
 
+(defn my-subwidget [data owner]
+  (reify
+    om/IRender
+    (render [_]
+            (prn "my-subwidget IRender")
+            (dom/h2 nil data))))
+
 (om/root
   my-widget
   app-state
   {:target (. js/document (getElementById "app"))})
 
 (swap! app-state (fn [state]
-                   (assoc state :text "Test swa5")))
+                   (assoc state :text "Test swa7")))
 
