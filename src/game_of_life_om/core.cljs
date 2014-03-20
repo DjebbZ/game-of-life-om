@@ -17,7 +17,9 @@
     (render [this]
             (js/console.log "IRender")
             (dom/div nil
-             (dom/h1 nil (:text data))
+             (dom/h1 #js {:ref "h1"
+                          :onMouseOver #(set! (.-color (.-style (om/get-node owner "h1"))) "red")}
+                     (:text data))
              (om/build my-subwidget (:subtitle data)))
             )
 
