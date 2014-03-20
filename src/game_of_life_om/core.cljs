@@ -11,11 +11,11 @@
   (reify
     om/IInitState
     (init-state [_]
-                (prn "IIniState")
+                (js/console.log "IIniState")
                 nil)
     om/IRender
-    (render [_]
-            (prn "IRender")
+    (render [this]
+            (js/console.log "IRender")
             (dom/div nil
              (dom/h1 nil (:text data))
              (om/build my-subwidget (:subtitle data)))
@@ -23,29 +23,29 @@
 
     om/IWillMount
     (will-mount [_]
-                (prn "IWillUnmount"))
+                (js/console.log "IWillUnmount"))
     om/IDidMount
     (did-mount [_]
-               (prn "IDidMount"))
+               (js/console.log "IDidMount"))
     om/IWillUpdate
     (will-update [_ _ _]
-                 (prn "IWillUpdate"))
+                 (js/console.log "IWillUpdate"))
     om/IDidUpdate
     (did-update [_ _ _]
-                (prn "IDidUpdate"))
+                (js/console.log "IDidUpdate"))
     om/IWillUnmount
     (will-unmount [_]
-                     (prn "IWillUnmount"))
+                     (js/console.log "IWillUnmount"))
     om/IShouldUpdate
     (should-update [_ _ _]
-                   (prn "IShouldUpdate")
+                   (js/console.log "IShouldUpdate")
                    true)))
 
 (defn my-subwidget [data owner]
   (reify
     om/IRender
     (render [_]
-            (prn "my-subwidget IRender")
+            (js/console.log "my-subwidget IRender")
             (dom/h2 nil data))))
 
 (om/root

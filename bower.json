@@ -1,0 +1,26 @@
+{
+  "name": "game-of-life-om",
+  "version": "0.0.0",
+  "homepage": "https://github.com/DjebbZ/game-of-life-om",
+  "authors": [
+    "DjebbZ <khalid.jebbari@gmail.com>"
+  ],
+  "description": "Game of life implement with Om",
+  "main": "index.html",
+  "keywords": [
+    "Om",
+    "React",
+    "ClojureScript"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.9.0"
+  }
+}
